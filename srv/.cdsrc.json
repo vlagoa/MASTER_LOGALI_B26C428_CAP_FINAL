@@ -1,0 +1,16 @@
+{
+    "requires": {
+        "[dev]": {
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "url": "salesorder.sqlite"
+                }
+            }
+        },
+        "[production]": {
+            "db": "hana",
+            "auth": "xsuaa"
+        }
+    }
+}

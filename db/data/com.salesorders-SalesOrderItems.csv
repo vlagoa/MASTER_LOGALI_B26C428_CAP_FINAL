@@ -1,0 +1,4 @@
+ID;header_ID;name;description;releasedate;discontinueddate;price;height;width;depth;quantity;unitofmeasure
+11111111-1111-1111-1111-111111111111;4b9981be-d3b1-41d3-bc07-6f8a4cb02001;Laptop Pro;Ordenador de desarrollo;2026-01-01;;1200.00;2.10;35.50;24.00;1.00;EA
+22222222-2222-2222-2222-222222222222;4b9981be-d3b1-41d3-bc07-6f8a4cb02001;Monitor 27;Pantalla 4K Trabajo;2026-02-15;;350.50;45.00;61.00;15.00;2.00;EA
+33333333-3333-3333-3333-333333333333;d8f1e6b3-6c24-4f81-ba29-9e8c3fa14002;Teclado Mecanico;Teclado silencioso;2026-03-01;;85.00;3.50;44.00;13.00;1.00;EA

@@ -1,6 +1,9 @@
 using {com.salesorders as entities } from '../db/schema';
 
 service SaleorderSercice {
-    entity sales_or_h as projection on entities.sales_or_h;
+    entity SalesOrderHeader as projection on entities.SalesOrderHeader;
+    entity SalesOrderItems  as projection on entities.SalesOrderItems;
+    
+     @readonly entity Countries as projection on entities.Countries;
     };
 
