@@ -1,0 +1,4 @@
+locale;code;name;descr
+es;1;Abierto;Orden Abierta o Pendiente
+es;2;Completado;Orden Finalizada con Éxito
+es;3;Cancelado;Orden Anulada

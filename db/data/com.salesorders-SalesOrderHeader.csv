@@ -1,3 +1,3 @@
-ID;email;firstname;lastname;country_code;orderstatus;imageurl
-4b9981be-d3b1-41d3-bc07-6f8a4cb02001;juan.perez@logali.com;Juan;Perez;ESP;1;https://example.com
-d8f1e6b3-6c24-4f81-ba29-9e8c3fa14002;maria.gomez@logali.com;Maria;Gomez;ARG;2;
+ID;salesOrderNumber;mail;firstname;lastname;country_code;createon;deliverydate;orderstatus_code;imageurl;createdAt;createdBy;modifiedAt;modifiedBy
+4b9981be-d3b1-41d3-bc07-6f8a4cb02001;SO-1001;juan.perez@logali.com;Juan;Perez;ESP;2026-10-20;2026-10-25;1;https://example.com;;;;
+d8f1e6b3-6c24-4f81-ba29-9e8c3fa14002;SO-1002;maria.gomez@logali.com;Maria;Gomez;ARG;2026-10-21;2026-10-26;2;;;;;

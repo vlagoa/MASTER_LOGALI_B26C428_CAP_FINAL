@@ -8,13 +8,14 @@ using {
 } from '@sap/cds/common';
 
 entity SalesOrderHeader : cuid, managed {
-    key email        : String(30);
+        salesOrderNumber : String(10); // Tu nuevo número de pedido comercial
+        mail        : String(30);
         firstname    : String(30);
         lastname     : String(30);
         country      : Association to Countries;
         createon     : Date;
-        deliverydate : DateTime;
-        orderstatus  : Integer;
+        deliverydate : Date;
+        orderstatus  : Association to Status; 
         imageurl     : String;
 
         // Composición para vincular la cabecera con sus ítems
@@ -39,4 +40,7 @@ entity SalesOrderItems : cuid {
 // Definimos la entidad Countries heredando de CodeList de SAP
 entity Countries : CodeList {
     key code : String(3); // Ejemplo: 'ESP', 'ARG', 'USA'
+}
+entity Status : CodeList  {
+    key code : String(20); 
 }
