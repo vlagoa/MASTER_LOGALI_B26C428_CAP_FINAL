@@ -40,7 +40,9 @@ entity SalesOrderItems : cuid {
 // Definimos la entidad Countries heredando de CodeList de SAP
 entity Countries : CodeList {
     key code : String(3); // Ejemplo: 'ESP', 'ARG', 'USA'
+     //name     : String(50);
 }
 entity Status : CodeList  {
-    key code : String(20); 
+    key code : String(3); 
+     //name     : String(50);
 }
