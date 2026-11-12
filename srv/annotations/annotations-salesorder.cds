@@ -1,4 +1,6 @@
 using SalesOrdersService as s from '../salesorders-service';
+using from './annotations-salesorderitems';
+
 
 annotate s.SalesOrdersHeader with {
     salesOrderNumber @title: 'Sale Order Number';
@@ -76,7 +78,53 @@ annotate s.SalesOrdersHeader @(
             Value: imageurl,
         },
     ],
+    UI.FieldGroup #Recipient: {
+        $type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Value: firstname,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: lastname,
+            },
+        ]
+    }, 
 
+    UI.FieldGroup #Data: {
+        $type: 'UI.FieldGroupType',
+        Data : [
+
+            {
+                $Type: 'UI.DataField',
+                Value: createon,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: deliverydate,
+            },
+        ]
+    },
+    UI.HeaderFacets: [
+        {   
+            $Type : 'UI.ReferenceFacet',
+            Target: '@UI.FieldGroup#Recipient',
+            Label: 'Recipient'
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Target: '@UI.FieldGroup#Data',
+            Label: 'Order Dates'
+        }
+    ],
+    UI.Facets: [
+        {
+            $Type  : 'UI.ReferenceFacet',
+            Target : 'items/@UI.FieldGroup#ItemDetails',
+            Label  : 'Items'
+        }
+    ]
 );
 
 // Mapeo para que Fiori Elements reemplace el código numérico por el texto traducido
