@@ -1,22 +1,23 @@
 using SalesOrdersService as s from '../salesorders-service';
 using from './annotations-salesorderitems';
 
+annotate s.SalesOrdersHeader with @odata.draft.enabled;
 
 annotate s.SalesOrdersHeader with {
     salesOrderNumber @title: 'Sale Order Number';
     mail             @title: 'Email';
     firstname        @title: 'First Name';
     lastname         @title: 'Last Name';
-    country          @title: 'Country'     @Common.Text: country.name      @Common.TextArrangement: #TextOnly;
+    country          @title: 'Country'       @Common.Text: country.name      @Common.TextArrangement: #TextOnly;
     createon         @title: 'Creation Date';
     deliverydate     @title: 'Delivery Date';
-    orderstatus      @title: 'Order Status' @Common.Text: orderstatus.name  @Common.TextArrangement: #TextOnly;
-    imageurl
+    orderstatus      @title: 'Order Status'  @Common.Text: orderstatus.name  @Common.TextArrangement: #TextOnly;
+    imageurl         @title: 'Image URL';
 };
 
 
 annotate s.SalesOrdersHeader @(
-    UI.SelectionFields: [
+    UI.SelectionFields      : [
         salesOrderNumber,
         country,
         orderstatus_code,
@@ -25,7 +26,7 @@ annotate s.SalesOrdersHeader @(
         country_code,
     ],
 
-    UI.HeaderInfo     : {
+    UI.HeaderInfo           : {
         $type         : 'UI.HeaderInfoType',
         TypeName      : 'Sales Order Header',
         TypeNamePlural: 'Sales Order Headers',
@@ -33,13 +34,13 @@ annotate s.SalesOrdersHeader @(
             $type: 'UI.DataField',
             Value: salesOrderNumber,
         },
-        Description         : {
+        Description   : {
             $type: 'UI.DataField',
             Value: orderstatus_code,
         },
     },
 
-    UI.LineItem       : [
+    UI.LineItem             : [
         {
             $Type: 'UI.DataField',
             Value: salesOrderNumber,
@@ -89,10 +90,18 @@ annotate s.SalesOrdersHeader @(
                 $Type: 'UI.DataField',
                 Value: lastname,
             },
+            {
+                $Type: 'UI.DataField',
+                Value: mail,
+            },
+            {
+                $Type: 'UI.DataField',
+                Value: country_code,
+            },
         ]
-    }, 
+    },
 
-    UI.FieldGroup #Data: {
+    UI.FieldGroup #Data     : {
         $type: 'UI.FieldGroupType',
         Data : [
 
@@ -104,27 +113,30 @@ annotate s.SalesOrdersHeader @(
                 $Type: 'UI.DataField',
                 Value: deliverydate,
             },
+            {
+                $Type: 'UI.DataField',
+                Value: imageurl,
+            },            
         ]
     },
-    UI.HeaderFacets: [
-        {   
+    UI.HeaderFacets         : [
+        {
             $Type : 'UI.ReferenceFacet',
             Target: '@UI.FieldGroup#Recipient',
-            Label: 'Recipient'
+            Label : 'Recipient'
         },
         {
             $Type : 'UI.ReferenceFacet',
             Target: '@UI.FieldGroup#Data',
-            Label: 'Order Dates'
+            Label : 'Order Dates'
         }
     ],
-    UI.Facets: [
-        {
-            $Type  : 'UI.ReferenceFacet',
-            Target : 'items/@UI.FieldGroup#ItemDetails',
-            Label  : 'Items'
-        }
-    ]
+    UI.Facets               : [{
+        $Type : 'UI.ReferenceFacet',
+        Target: 'items/@UI.LineItem',
+        //'items/@UI.FieldGroup#ItemDetails',
+        Label : 'Items'
+    }]
 );
 
 // Mapeo para que Fiori Elements reemplace el código numérico por el texto traducido
