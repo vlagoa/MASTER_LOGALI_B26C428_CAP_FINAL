@@ -14,7 +14,7 @@ annotate s.SalesOrdersHeader with {
     orderstatus      @title: '{i18n>orderStatus}' 
      @Common.Text: orderstatus.name  @Common.TextArrangement: #TextOnly
      @Common.FieldControl: #Mandatory;
-    imageurl         @title: '{i18n>imageUrl}' @UI.IsImageURL;
+    imageurl         @title: '{i18n>imageUrl}';
 };
 
 

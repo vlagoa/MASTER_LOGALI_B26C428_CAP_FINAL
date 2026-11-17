@@ -76,14 +76,6 @@ annotate p.SalesOrderItems with @(
         Data : [
             {
                 $Type: 'UI.DataField',
-                Value: name
-            },
-            {
-                $Type: 'UI.DataField',
-                Value: description
-            },
-            {
-                $Type: 'UI.DataField',
                 Value: releasedate
             },
             {

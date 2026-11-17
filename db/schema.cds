@@ -17,7 +17,7 @@ entity SalesOrderHeader : cuid, managed {
         createon     : Date;
         deliverydate : Date;
         orderstatus  : Association to Status; 
-        imageurl     : String;
+        imageurl : String(500);
 
         // Composición para vincular la cabecera con sus ítems
         items        : Composition of many SalesOrderItems
@@ -37,6 +37,7 @@ entity SalesOrderItems : cuid {
     quantity         : Decimal(16, 2);
     unitofmeasure    : String;
 }
+
 
 // Definimos la entidad Countries heredando de CodeList de SAP
 entity Countries : CodeList {
