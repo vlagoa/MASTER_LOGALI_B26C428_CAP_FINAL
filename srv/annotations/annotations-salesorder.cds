@@ -4,15 +4,17 @@ using from './annotations-salesorderitems';
 annotate s.SalesOrdersHeader with @odata.draft.enabled;
 
 annotate s.SalesOrdersHeader with {
-    salesOrderNumber @title: 'Sale Order Number';
-    mail             @title: 'Email';
-    firstname        @title: 'First Name';
-    lastname         @title: 'Last Name';
-    country          @title: 'Country'       @Common.Text: country.name      @Common.TextArrangement: #TextOnly;
-    createon         @title: 'Creation Date';
-    deliverydate     @title: 'Delivery Date';
-    orderstatus      @title: 'Order Status'  @Common.Text: orderstatus.name  @Common.TextArrangement: #TextOnly;
-    imageurl         @title: 'Image URL';
+    salesOrderNumber @title: '{i18n>salesOrderNumber}' @Common.FieldControl: #ReadOnly;
+    mail             @title: '{i18n>mail}' @Common.FieldControl: #Mandatory;
+    firstname        @title: '{i18n>firstName}' @Common.FieldControl: #Mandatory;
+    lastname         @title: '{i18n>lastName}' @Common.FieldControl: #Mandatory;
+    country          @title: '{i18n>country}'      @Common.Text: country.name      @Common.TextArrangement: #TextOnly;
+    createon         @title: '{i18n>createOn}' @Common.FieldControl: #ReadOnly;
+    deliverydate     @title: '{i18n>deliveryDate}';
+    orderstatus      @title: '{i18n>orderStatus}' 
+     @Common.Text: orderstatus.name  @Common.TextArrangement: #TextOnly
+     @Common.FieldControl: #Mandatory;
+    imageurl         @title: '{i18n>imageUrl}' @UI.IsImageURL;
 };
 
 
@@ -28,8 +30,9 @@ annotate s.SalesOrdersHeader @(
 
     UI.HeaderInfo           : {
         $type         : 'UI.HeaderInfoType',
-        TypeName      : 'Sales Order Header',
-        TypeNamePlural: 'Sales Order Headers',
+    TypeName       : '{i18n>salesOrderHeader}',
+    TypeNamePlural : '{i18n>salesOrderHeaders}',
+        ImageUrl       : imageurl,
         Title         : {
             $type: 'UI.DataField',
             Value: salesOrderNumber,
@@ -120,22 +123,22 @@ annotate s.SalesOrdersHeader @(
         ]
     },
     UI.HeaderFacets         : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            Target: '@UI.FieldGroup#Recipient',
-            Label : 'Recipient'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            Target: '@UI.FieldGroup#Data',
-            Label : 'Order Dates'
-        }
+    {
+        $Type  : 'UI.ReferenceFacet',
+        Target : '@UI.FieldGroup#Recipient',
+        Label  : '{i18n>recipient}'
+    },
+    {
+        $Type  : 'UI.ReferenceFacet',
+        Target : '@UI.FieldGroup#Data',
+        Label  : '{i18n>orderDates}'
+    }
     ],
     UI.Facets               : [{
         $Type : 'UI.ReferenceFacet',
         Target: 'items/@UI.LineItem',
         //'items/@UI.FieldGroup#ItemDetails',
-        Label : 'Items'
+         Label  : '{i18n>orderItems}'
     }]
 );
 

@@ -4,7 +4,8 @@ namespace com.salesorders;
 using {
     cuid, // Reemplaza el UUID por cuid para generar identificadores únicos
     managed,
-    sap.common.CodeList
+    sap.common.CodeList,
+    sap.common.currencies
 } from '@sap/cds/common';
 
 entity SalesOrderHeader : cuid, managed {

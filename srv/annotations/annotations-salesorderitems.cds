@@ -2,24 +2,24 @@ using {SalesOrdersService as p} from '../salesorders-service';
 
 
 annotate p.SalesOrderItems with {
-    name             @title: 'Name';
-    description      @title: 'Description';
-    releasedate      @title: 'Release Date';
-    discontinueddate @title: 'Discontinued Date';
-    quantity         @title: 'Quantity';
-    price            @title: 'Price';
-    width            @title: 'Width';
-    height           @title: 'Height';
-    depth            @title: 'Depth';
-    unitofmeasure    @title: 'Unit of Measure';
+    name             @title: '{i18n>name}'             @Common.FieldControl: #Mandatory;
+    description      @title: '{i18n>description}'      @Common.FieldControl: #Mandatory;
+    releasedate      @title: '{i18n>releaseDate}';
+    discontinueddate @title: '{i18n>discontinuedDate}';
+    quantity         @title: '{i18n>quantity}'         @Common.FieldControl: #Mandatory;
+    price            @title: '{i18n>price}'            @Common.FieldControl: #Mandatory;
+    width            @title: '{i18n>width}';
+    height           @title: '{i18n>height}';
+    depth            @title: '{i18n>depth}';
+    unitofmeasure    @title: '{i18n>unitOfMeasure}';
 };
 
 annotate p.SalesOrderItems with @(
 
     // 1. Encabezado de la ficha individual del ítem
     UI.HeaderInfo             : {
-        TypeName      : 'Sales Order Item',
-        TypeNamePlural: 'Sales Order Items',
+        TypeName       : '{i18n>salesOrderItem}',
+        TypeNamePlural : '{i18n>orderItems}',
         Title         : {
             $Type: 'UI.DataField',
             Value: name
@@ -34,7 +34,7 @@ annotate p.SalesOrderItems with @(
     UI.Facets                 : [{
         $Type : 'UI.ReferenceFacet',
         Target: '@UI.FieldGroup#ItemDetails',
-        Label : 'Item Details'
+        Label  : '{i18n>itemDetails}'
     }],
 
     UI.LineItem               : [
